@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
 
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.amber,
       ),
-      home: const MyHomePage(title: 'Japan VS Spain'),
+      home: const MyHomePage(title: 'FIFA WORLD CUP QATAR 2022'),
     );
   }
 }
@@ -45,7 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Which will be the winner',
+            ),
+            const Text(
+              'Japan VS Spain'
             ),
             Text(
               '$_counter',
