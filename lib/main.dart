@@ -27,13 +27,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  void _incrementCounter() {
+  int _counterJapan = 0;
+  int _counterCroatia = 0;
+  void _incrementCounter_Japan() {
     setState(() {
-      _counter++;
+      _counterJapan++;
     });
   }
-
+void _incrementCounter_Croatia() {
+    setState(() {
+      _counterCroatia++;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,23 +53,38 @@ class _MyHomePageState extends State<MyHomePage> {
               'Which will be the winner?',
             ),
             const Text(
-              'Japan VS Croatia',
+              'Japan VS Spain',
               style: TextStyle(
                 fontSize: 30,
               ),
             ),
             Text(
-              '$_counter',
+              '$_counterJapan',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            Text(
+              '$_counterCroatia',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: Row(
+        children: [
+          FloatingActionButton(
+            heroTag: 'Japan',
+            onPressed: _incrementCounter_Japan,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+          FloatingActionButton(
+            heroTag: 'Croatia',
+            onPressed: _incrementCounter_Croatia,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          )
+        ],
+      ),
     );
   }
 }
