@@ -29,16 +29,37 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counterJapan = 0;
   int _counterCroatia = 0;
-  void _incrementCounter_Japan() {
+  void _incrementCounter_Japan() { //日本のゴール
     setState(() {
       _counterJapan++;
     });
   }
-void _incrementCounter_Croatia() {
+void _offSideDelay_Japan() { //日本のオフサイドディレイ
     setState(() {
-      _counterCroatia++;
+      _counterJapan--;
     });
+}
+void _offSideDelay_Croatia() { //クロアチアのオフサイドディレイ
+    setState(() {
+      _counterCroatia--;
+    });
+}
+
+void _incrementCounter_Croatia() { //クロアチアのゴール
+  setState(() {
+    _counterCroatia++;
+  });
+}
+void _nationalFlag(){ //背景色を変える
+  if (_counterJapan > _counterCroatia){
+        print('japan');
+      } else if (_counterJapan > _counterCroatia){
+        print('croatia');
+      } else {
+        print('draw');
+      }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,23 +74,33 @@ void _incrementCounter_Croatia() {
               'Which will be the winner?',
             ),
             const Text(
-              'Japan VS Spain',
+              'Japan VS Croatia',
               style: TextStyle(
                 fontSize: 30,
               ),
             ),
-            Text(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
               '$_counterJapan',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            Text(
+              '-',
               style: Theme.of(context).textTheme.headline4,
             ),
             Text(
               '$_counterCroatia',
               style: Theme.of(context).textTheme.headline4,
             ),
+              ],
+            ),
           ],
         ),
       ),
       floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FloatingActionButton(
             heroTag: 'Japan',
